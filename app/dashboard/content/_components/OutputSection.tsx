@@ -1,19 +1,30 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client"
+
 import '@toast-ui/editor/dist/toastui-editor.css';
 
 import { Editor } from '@toast-ui/react-editor';
 import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
+interface Props {
+  aiOutput: string
+}
 
-const OutputSection = () => {
+const OutputSection = ({ aiOutput }: Props) => {
   const editorRef: any = useRef(null);
+
+  useEffect(() => {
+    const editorInstance = editorRef.current.getInstance()
+    editorInstance.setMarkdown(aiOutput)
+  }, [aiOutput])
 
   return (
     <div className="bg-white shadow-lg border rounded-lg">
       <div className="flex justify-between items-center p-5">
         <h2 className='font-medium text-lg'>Your Result</h2>
-        <Button className='flex gap-2'>
+        <Button className='flex gap-2' onClick={() => navigator.clipboard.writeText(aiOutput)}>
           <Copy className='w-5 h-5' />
           Copy
         </Button>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { useState } from 'react'
@@ -6,13 +7,15 @@ import Image from 'next/image'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
+import { Loader2Icon } from 'lucide-react'
 
 interface Props {
   selectedTemplate?: Template
   userFormData: any
+  loading: boolean
 }
 
-const FormSection = ({ selectedTemplate, userFormData }: Props) => {
+const FormSection = ({ selectedTemplate, userFormData, loading }: Props) => {
   const [formData, setFormData] = useState<any>()
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -54,7 +57,14 @@ const FormSection = ({ selectedTemplate, userFormData }: Props) => {
           </div>
         ))}
 
-        <Button type='submit' className='w-full py-6'>Generate Content</Button>
+        <Button
+          type='submit'
+          className='w-full py-6'
+          disabled={loading}
+        >
+          {loading && <Loader2Icon className='animate-spin' />}
+          Generate Content
+        </Button>
       </form>
     </div>
   )

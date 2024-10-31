@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { FileClock, Home, Settings, WalletCards } from 'lucide-react'
 import { useEffect } from 'react'
+import UsageTrack from './UsageTrack'
 
 const SideNav = () => {
   const menuItems = [
@@ -52,6 +53,9 @@ const SideNav = () => {
             <h2 className='text-lg'>{item.name}</h2>
           </div>
         ))}
+      </div>
+      <div className='absolute bottom-10 left-0 w-full'>
+        <UsageTrack />
       </div>
     </div>
   )

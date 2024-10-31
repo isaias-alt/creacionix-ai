@@ -9,9 +9,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      {/* Searc Section */}
       <SearchSection onSearchInput={(value: string) => setUserSearchInput(value)} />
-      {/* Templates Lists Section */}
       <TemplateListSection userSearchInput={userSearchInput} />
     </div>
   )

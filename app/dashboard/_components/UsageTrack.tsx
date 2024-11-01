@@ -4,6 +4,7 @@
 "use client"
 
 import { TotalUsageContext } from "@/app/(context)/TotalUsageContext"
+import { UpdateCreditUsageContext } from "@/app/(context)/UpdateCreditUsageContext"
 import { Button } from "@/components/ui/button"
 import { db } from "@/utils/db"
 import { AIOutput } from "@/utils/schema"
@@ -23,11 +24,16 @@ export interface RESULT {
 function UsageTrack() {
   const { user } = useUser()
   const { totalUsage, setTotalUsage } = useContext(TotalUsageContext)
+  const { updateCreditUsage } = useContext(UpdateCreditUsageContext)
 
 
   useEffect(() => {
     user && getData()
   }, [user])
+
+  useEffect(() => {
+    user && getData()
+  }, [updateCreditUsage, user])
 
   const getData = async () => {
     const result: RESULT[] = await db.select().from(AIOutput).where(eq(AIOutput.createdBy, user?.primaryEmailAddress?.emailAddress))

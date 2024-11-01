@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { FileClock, Home, Settings, WalletCards } from 'lucide-react'
 import { useEffect } from 'react'
 import UsageTrack from './UsageTrack'
+import Link from 'next/link'
 
 const SideNav = () => {
   const menuItems = [
@@ -44,14 +45,15 @@ const SideNav = () => {
       <hr className='my-4 border' />
       <div className='mt-3'>
         {menuItems.map((item) => (
-          <div
-            key={item.name}
-            className={`flex items-center gap-2 mb-2 p-3 hover:bg-primary hover:text-white rounded-lg cursor-pointer 
+          <Link key={item.name} href={item.path}>
+            <div
+              className={`flex items-center gap-2 mb-2 p-3 hover:bg-primary hover:text-white rounded-lg cursor-pointer 
               ${pathname === item.path ? 'bg-primary text-white' : ''}`}
-          >
-            <item.icon className='w-6 h-8' />
-            <h2 className='text-lg'>{item.name}</h2>
-          </div>
+            >
+              <item.icon className='w-6 h-8' />
+              <h2 className='text-lg'>{item.name}</h2>
+            </div>
+          </Link>
         ))}
       </div>
       <div className='absolute bottom-10 left-0 w-full'>

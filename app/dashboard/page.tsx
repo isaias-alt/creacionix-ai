@@ -4,7 +4,7 @@ import { useState } from "react"
 import SearchSection from "./_components/SearchSection"
 import TemplateListSection from "./_components/TemplateListSection"
 
-const Dashboard = () => {
+const DashboardPage = () => {
   const [userSearchInput, setUserSearchInput] = useState<string>("")
 
   return (
@@ -15,4 +15,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default DashboardPage

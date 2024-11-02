@@ -9,16 +9,10 @@ const Header = () => {
         <input
           type="text"
           placeholder="Search..."
-          name=""
-          id=""
           className="outline-none"
         />
       </div>
       <div className="flex items-center gap-5">
-        <h2 className="bg-primary p-1 rounded-full text-[8px] md:text-xs text-white px-2"
-        >
-          🔥 Join Membership just for $9.99/month
-        </h2>
         <UserButton />
       </div>
     </div>

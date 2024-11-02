@@ -7,7 +7,7 @@ const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Creacionix AI",
-  description: "Revolutionize your content creation with our AI-powered app, delivering engaging and high-quality text in seconds.",
+  description: "Revolutionize your content creation with our AI-powered app.",
 };
 
 export default function RootLayout({

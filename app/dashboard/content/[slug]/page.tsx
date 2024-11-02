@@ -9,14 +9,11 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import { chatSession } from "@/utils/AIModal"
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { db } from "@/utils/db"
 import { AIOutput } from "@/utils/schema"
 import { useUser } from "@clerk/nextjs"
 import moment from "moment"
-import { TotalUsageContext } from "@/app/(context)/TotalUsageContext"
-import { useRouter } from "next/navigation"
-import { UpdateCreditUsageContext } from "@/app/(context)/UpdateCreditUsageContext"
 
 interface Props {
   params: {
@@ -31,17 +28,9 @@ const CreateNewContentPage = (props: Props) => {
   const [loading, setLoading] = useState(false)
   const [aiOutput, setAIOutput] = useState<string>()
   const { user } = useUser()
-  const router = useRouter()
-  const { totalUsage } = useContext(TotalUsageContext)
-  const { updateCreditUsage, setUpdateCreditUsage } = useContext(UpdateCreditUsageContext)
-
 
   const generateAIContent = async (formData: any) => {
-    if (totalUsage! >= 10000) {
-      console.log("You have reached your limit")
-      router.push('/dashboard/billing')
-      return
-    }
+
     setLoading(true)
     const selectedPrompt = selectedTemplate?.aiPrompt
     const finalAIPrompt = JSON.stringify(formData) + ", " + selectedPrompt
@@ -49,7 +38,6 @@ const CreateNewContentPage = (props: Props) => {
     setAIOutput(result?.response.text())
     await saveInDb(formData, selectedTemplate?.slug, result?.response.text())
     setLoading(false)
-    setUpdateCreditUsage(Date.now())
   }
 
   const saveInDb = async (formData: any, slug: any, aiOutput: string) => {
@@ -78,7 +66,7 @@ const CreateNewContentPage = (props: Props) => {
           loading={loading}
         />
         <div className="col-span-2">
-          <OutputSection aiOutput={aiOutput} />
+          <OutputSection aiOutput={aiOutput!} />
         </div>
       </div>
     </div>

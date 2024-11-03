@@ -344,10 +344,6 @@ export default [
         name: 'outline',
         required: true
       },
-
     ]
   },
-
-
-
 ]

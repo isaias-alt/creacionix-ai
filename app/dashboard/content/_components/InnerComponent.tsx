@@ -30,12 +30,16 @@ export default function InnerComponent({ slug }: { slug: string }) {
     setLoading(false);
   };
 
-  const saveInDb = async (formData: any, slug: any, aiOutput: string) => {
+  const saveInDb = async (formData: any, slug: string | undefined, aiOutput: string | undefined) => {
+    if (!formData || !slug || !aiOutput) {
+      throw new Error("FormData, slug, and aiOutput must be defined");
+    }
+
     const result = await db.insert(AIOutput).values({
       formData: formData,
       templateSlug: slug,
       aiResponse: aiOutput,
-      createdBy: user?.primaryEmailAddress?.emailAddress,
+      createdBy: user?.primaryEmailAddress?.emailAddress || "",
       createdAt: moment().format('DD/MM/yyyy'),
     });
     return result;
@@ -56,7 +60,7 @@ export default function InnerComponent({ slug }: { slug: string }) {
           loading={loading}
         />
         <div className="col-span-2">
-          <OutputSection aiOutput={aiOutput!} />
+          <OutputSection aiOutput={aiOutput || "Error: No output found"} />
         </div>
       </div>
     </div>

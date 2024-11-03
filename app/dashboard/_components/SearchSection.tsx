@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Search } from "lucide-react"
 
 const SearchSection = ({ onSearchInput }: any) => {

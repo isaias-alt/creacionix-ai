@@ -60,7 +60,7 @@ export default function InnerComponent({ slug }: { slug: string }) {
           loading={loading}
         />
         <div className="col-span-2">
-          <OutputSection aiOutput={aiOutput || "Error: No output found"} />
+          <OutputSection aiOutput={aiOutput!} />
         </div>
       </div>
     </div>

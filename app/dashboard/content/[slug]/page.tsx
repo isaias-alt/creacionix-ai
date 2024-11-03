@@ -7,12 +7,12 @@ import { Template } from "../../_components/TemplateListSection"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
-import { chatSession } from "@/utils/AIModal"
 import { useState } from "react"
 import { db } from "@/utils/db"
 import { AIOutput } from "@/utils/schema"
 import { useUser } from "@clerk/nextjs"
 import moment from "moment"
+import { chatSession } from "@/utils/aIModal"
 
 interface Props {
   params: {
@@ -29,7 +29,6 @@ const CreateNewContentPage = (props: Props) => {
   const { user } = useUser()
 
   const generateAIContent = async (formData: any) => {
-
     setLoading(true)
     const selectedPrompt = selectedTemplate?.aiPrompt
     const finalAIPrompt = JSON.stringify(formData) + ", " + selectedPrompt
@@ -47,7 +46,7 @@ const CreateNewContentPage = (props: Props) => {
       createdBy: user?.primaryEmailAddress?.emailAddress,
       createdAt: moment().format('DD/MM/yyyy'),
     })
-    console.log(result)
+    return result
   }
 
   return (

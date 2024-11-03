@@ -6,7 +6,10 @@ import { ClerkProvider } from "@clerk/nextjs";
 const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Creacionix AI",
+  title: {
+    default: "Creacionix AI",
+    template: `%s | Creacionix AI`,
+  },
   description: "Revolutionize your content creation with our AI-powered app.",
   openGraph: {
     type: "website",

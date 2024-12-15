@@ -1,9 +1,9 @@
 "use client";
 
-import Templates from "@/app/(data)/Templates";
-import FormSection from "./FormSection";
-import OutputSection from "./OutputSection";
-import { Template } from "../../_components/TemplateListSection";
+import Templates from "@/app/(data)/templates";
+import FormSection from "./form-section";
+import OutputSection from "./output-section";
+import { Template } from "../../__components/template-list-section";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
@@ -12,9 +12,9 @@ import { db } from "@/utils/db";
 import { AIOutput } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment";
-import { chatSession } from "@/utils/aIModal";
+import { chatSession } from "@/utils/gemini";
 
-export default function InnerComponent({ slug }: { slug: string }) {
+export default function InnerSection({ slug }: { slug: string }) {
   const selectedTemplate: Template | undefined = Templates.find((template) => template.slug === slug);
   const [loading, setLoading] = useState(false);
   const [aiOutput, setAIOutput] = useState<string>();

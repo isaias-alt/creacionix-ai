@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import SearchSection from "./_components/SearchSection"
-import TemplateListSection from "./_components/TemplateListSection"
+import SearchSection from "./__components/search-section"
+import TemplateListSection from "./__components/template-list-section"
 
 const DashboardPage = () => {
   const [userSearchInput, setUserSearchInput] = useState<string>("")

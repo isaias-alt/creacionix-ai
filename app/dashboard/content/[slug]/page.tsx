@@ -1,4 +1,4 @@
-import InnerComponent from "../_components/InnerComponent";
+import InnerSection from "../__components/inner-section";
 
 export default async function CreateNewContentPage({
   params,
@@ -8,7 +8,7 @@ export default async function CreateNewContentPage({
   const { slug } = await params;
 
   return (
-    <InnerComponent slug={slug} />
+    <InnerSection slug={slug} />
   );
 }
 

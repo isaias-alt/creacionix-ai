@@ -9,7 +9,7 @@ import { AIOutput } from "@/utils/schema"
 import { eq } from "drizzle-orm"
 import { useUser } from "@clerk/nextjs"
 import { useToast } from '@/hooks/use-toast'
-import Templates from '@/app/(data)/Templates'
+import Templates from '@/app/(data)/templates'
 import Image from 'next/image'
 
 interface HistoryItem {
@@ -71,7 +71,7 @@ export default function Component() {
       </CardHeader>
       <CardContent>
         <div className="rounded-lg border">
-          <div className="flex items-center p-4 bg-muted font-medium text-sm">
+          <div className="hidden sm:flex items-center p-4 bg-muted font-medium text-sm">
             <div className="flex-1">TEMPLATE</div>
             <div className="flex-[2]">AI RESP</div>
             <div className="flex-1 text-center">DATE</div>
@@ -80,18 +80,18 @@ export default function Component() {
           </div>
           <div className="divide-y">
             {history.map((item) => (
-              <div key={item.id} className="flex items-center p-4">
+              <div key={item.id} className="flex flex-col sm:flex-row items-center sm:items-stretch p-4 gap-4 sm:gap-0">
                 <div className="flex-1 flex items-center gap-2">
                   <Image src={`${getTemplateIcon(item.templateSlug)}`} alt={`${getTemplateName(item.templateSlug)}`} width={32} height={32} />
-                  <p className="text-lg">{getTemplateName(item.templateSlug)}</p>
+                  <p className="text-lg text-center sm:text-left">{getTemplateName(item.templateSlug)}</p>
                 </div>
                 <div className="flex-[2] text-sm line-clamp-3 px-4">
                   {item.aiResponse}
                 </div>
-                <div className="flex-1 text-sm text-center whitespace-nowrap">
+                <div className="flex-1 text-sm text-center whitespace-nowrap hidden sm:block">
                   {item.createdAt}
                 </div>
-                <div className="flex-1 text-sm text-center">
+                <div className="flex-1 text-sm text-center hidden sm:block">
                   {item.aiResponse ? getWordCount(item.aiResponse) : 0}
                 </div>
                 <div className="flex-1 text-center">

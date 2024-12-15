@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-import { Template } from '../../_components/TemplateListSection'
+import { Template } from '../../__components/template-list-section'
 import Image from 'next/image'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'

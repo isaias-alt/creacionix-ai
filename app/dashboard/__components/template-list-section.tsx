@@ -1,7 +1,7 @@
 "use client"
 
-import Templates from "@/app/(data)/Templates"
-import TemplateCard from "./TemplateCard"
+import Templates from "@/app/(data)/templates"
+import TemplateCard from "./template-card"
 import { useEffect, useState } from "react"
 
 export interface Template {

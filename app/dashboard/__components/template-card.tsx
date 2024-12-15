@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Template } from "./TemplateListSection"
+import { Template } from "./template-list-section"
 import Link from "next/link"
 
 const TemplateCard = (item: Template) => {

@@ -2,34 +2,12 @@
 
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-import { FileClock, Home, Settings } from 'lucide-react'
-import { useEffect } from 'react'
 import Link from 'next/link'
+import { menuItems } from '@/app/(data)/constants'
 
 const SideNav = () => {
-  const menuItems = [
-    {
-      name: 'Home',
-      path: '/dashboard',
-      icon: Home
-    },
-    {
-      name: 'History',
-      path: '/dashboard/history',
-      icon: FileClock
-    },
-    {
-      name: 'Settings',
-      path: '/dashboard/settings',
-      icon: Settings
-    },
-  ]
 
   const pathname = usePathname()
-
-  useEffect(() => {
-    console.log(pathname)
-  }, [pathname])
 
   return (
     <div className='h-screen p-5 shadow-sm border bg-white'>

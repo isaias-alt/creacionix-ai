@@ -1,7 +1,10 @@
+packages:
+  - "."
+
 allowBuilds:
-  '@clerk/shared': set this to true or false
-  esbuild: set this to true or false
-  unrs-resolver: set this to true or false
+  '@clerk/shared': true
+  esbuild: true
+  unrs-resolver: true
 overrides:
   js-yaml: '4.3.2'
   sharp: '0.35.4'

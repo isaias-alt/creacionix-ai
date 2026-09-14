@@ -1,0 +1,7 @@
+allowBuilds:
+  '@clerk/shared': set this to true or false
+  esbuild: set this to true or false
+  unrs-resolver: set this to true or false
+overrides:
+  js-yaml: '4.3.2'
+  sharp: '0.35.4'
